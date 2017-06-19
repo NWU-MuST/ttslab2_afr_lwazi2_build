@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SOURCE_ROOT=$HOME/source/HTS
+SOURCE_ROOT=$HOME/src
 
-SPTK_BIN=$SOURCE_ROOT/SPTK/SPTK-3.8/bin/bin
+SPTK_BIN=$SOURCE_ROOT/SPTK-3.8/bin/bin
 HTS_BIN=$SOURCE_ROOT/htk/HTKTools
+EST_BIN=$SOURCE_ROOT/speech_tools/bin
