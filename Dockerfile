@@ -15,9 +15,10 @@ RUN apt-get install -y --force-yes csh #Required by SPTK
 RUN apt-get install -y --force-yes libx11-dev #Required by HTK
 RUN apt-get install -y --force-yes gfortran #Required by HTS
 RUN apt-get install -y --force-yes cmake cython python-numpy #Required to build TTSLab back-ends
+RUN apt-get install -y --force-yes python-cffi python-dateutil python-scipy #Required by TTSLab
 RUN apt-get install -y --force-yes libncurses5-dev #Required by EST
-RUN apt-get install -y --force-yes swig #Required to build Sequitur
-RUN apt-get install -y --force-yes sox normalize-audio tcl-snack praat #Required tools for voice build scripts
+RUN apt-get install -y --force-yes python-setuptools swig #Required to build Sequitur
+RUN apt-get install -y --force-yes bc sox normalize-audio tcl-snack praat #Required tools for voice build scripts
 
 
 ## SETUP USER, LOCAL SOURCE, AND DATA
@@ -39,6 +40,7 @@ COPY local $USERHOME/local
 WORKDIR $USERHOME
 RUN chown -R $USERNAME:$USERNAME src etc lang recs scripts local
 USER $USERNAME
+RUN ln -s lang data
 ENV PYTHONPATH=$USERHOME/local/lib/python2.7/site-packages:$PYTHONPATH
 ENV PATH=$USERHOME/local/bin:$PATH
 
@@ -58,7 +60,7 @@ RUN tar -xzvf SPTK-3.8.tar.gz
 WORKDIR $USERHOME/src/SPTK-3.8
 RUN ./configure; make; mkdir bin/bin;
 WORKDIR $USERHOME/src/SPTK-3.8/bin/bin
-RUN ln -s `find ../ -type f -executable | grep -v ".c" | grep -v ".h"` .
+RUN ln -s `find ../ -type f -executable | grep -v "\.c" | grep -v "\.h"` .
 
 ## Build HTS
 WORKDIR $USERHOME/src
@@ -73,7 +75,8 @@ WORKDIR $USERHOME/src
 RUN tar -xzvf g2p-r1668-r3.tar.gz
 WORKDIR $USERHOME/src/g2p
 RUN python setup.py install --prefix=$USERHOME/local
-
+WORKDIR $USERHOME/local/lib/python2.7/site-packages
+RUN ln -s $USERHOME/src/g2p/sequitur_.py
 
 ## Fetch, build and setup TTSLab and tools
 WORKDIR $USERHOME/src
@@ -101,7 +104,7 @@ ENV PATH=$USERHOME/src/ttslabdev2/scripts:$PATH
 ENV PYTHONPATH=$USERHOME/src/ttslab2:$USERHOME/src/ttslabdev2/modules:$PYTHONPATH
 
 
-## FETCH LANGUAGE DATA AND BUILD VOICE FRONTENDS
+## FETCH AND SETUP LANGUAGE DATA FOR VOICE FRONTENDS
 ############################################################
 
 #za_lex
@@ -114,6 +117,16 @@ ENV PATH=$USERHOME/src/za_lex/scripts:$PATH
 #afr dict
 WORKDIR $USERHOME/lang/pronun
 RUN ln -s $USERHOME/src/za_lex/data/afr/pronundict.txt
+RUN ln -s $USERHOME/src/za_lex/data/afr/phonememap.ipa-hts.tsv
+RUN ln -s $USERHOME/src/za_lex/data/afr/phonemeset.json
+
 #collapse to single stress level:
 RUN cut -d " " -f 1-2 > 12 < pronundict.txt; cut -d " " -f 3 > 3 < pronundict.txt; cut -d " " -f 4- > 4- < pronundict.txt; sed -i 's/2/1/g' 3; paste -d " " 12 3 4- > main.pronundict; rm 12 3 4-
 
+WORKDIR $USERHOME
+
+#COPY do_all.sh $USERHOME
+#COPY setup_alignments.sh $USERHOME
+#COPY do_hts_train.sh $USERHOME
+COPY out/g2ps_jsm.pickle $USERHOME/lang/pronun
+RUN chown -R demitasse:demitasse $USERHOME/lang/pronun
