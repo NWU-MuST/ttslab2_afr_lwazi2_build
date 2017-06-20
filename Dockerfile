@@ -44,6 +44,7 @@ RUN ln -s lang data
 ENV PYTHONPATH=$USERHOME/local/lib/python2.7/site-packages:$PYTHONPATH
 ENV PATH=$USERHOME/local/bin:$PATH
 
+
 ## FETCH, BUILD AND SETUP SPECIALISED SOFTWARE
 ############################################################
 
@@ -123,10 +124,8 @@ RUN ln -s $USERHOME/src/za_lex/data/afr/phonemeset.json
 #collapse to single stress level:
 RUN cut -d " " -f 1-2 > 12 < pronundict.txt; cut -d " " -f 3 > 3 < pronundict.txt; cut -d " " -f 4- > 4- < pronundict.txt; sed -i 's/2/1/g' 3; paste -d " " 12 3 4- > main.pronundict; rm 12 3 4-
 
+## BUILD VOICE WITH:
+## `docker run -v $TTSLAB2_AFR_LWAZI2_BUILD/out:/mnt/ext ttslab2_afr_lwazi2_build`
+############################################################
 WORKDIR $USERHOME
-
-#COPY do_all.sh $USERHOME
-#COPY setup_alignments.sh $USERHOME
-#COPY do_hts_train.sh $USERHOME
-COPY out/g2ps_jsm.pickle $USERHOME/lang/pronun
-RUN chown -R demitasse:demitasse $USERHOME/lang/pronun
+CMD bash $USERHOME/scripts/do_all.sh

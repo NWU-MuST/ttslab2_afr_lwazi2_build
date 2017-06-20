@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $HOME
+
 LANG="afrikaans"
 
 if [ ! -e data/pronun/g2ps_jsm.pickle ]; then
