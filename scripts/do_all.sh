@@ -13,5 +13,5 @@ ln -s dataset_speaker.htsvoice htsvoice
 ln -s mix_excitation_5filters_99taps_16Kz.txt mixfilter
 ln -s pulsedispersion.impulseresponse16000.txt pdfilter
 
-bash $HOME/make_voice.sh
+bash $HOME/scripts/make_voice.sh
 cp $HOME/hts_voice.pickle /mnt/ext/afr_lwazi2.voice.pickle
