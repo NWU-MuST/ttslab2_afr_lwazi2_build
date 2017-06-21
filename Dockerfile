@@ -1,7 +1,7 @@
 ############################################################
 #### TTSLab2 Lwazi2 Afrikaans build scripts
 ############################################################
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 MAINTAINER Daniel van Niekerk <dvn.demitasse@gmail.com>
 LABEL Description="TTSLab2 Lwazi2 Afrikaans build scripts"
