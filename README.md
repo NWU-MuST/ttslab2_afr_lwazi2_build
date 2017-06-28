@@ -1,7 +1,7 @@
 TTSLab Lwazi2 Afrikaans build scripts
 =====================================
 
-This repository contains pre-setup data and scripts for building an Afrikaans TTS voice using [TTSLab][1] and associated [build tools][2]. This repository should be built against TTSLab `commit be8f53c...`. The recommended way to do this is described in `./HOWTO.md` and involves cloning this repository and running the accompanying [Docker][3] script (`./Dockerfile`). 
+This repository contains pre-setup data and scripts for building an Afrikaans TTS voice using [TTSLab][1] and associated [build tools][2]. This repository should be built against TTSLab `commit 91734f9...`. The recommended way to do this is described in `./HOWTO.md` and involves cloning this repository and running the accompanying [Docker][3] script (`./Dockerfile`). 
 
 The copyright and licence information for scripts in this repository can be found in `./COPYRIGHT` and `./LICENCE-APACHE`/`./LICENCE-MIT`. This repository also contains software and data developed by third parties used under licence in the `./src` and `./recs` directories. Copyright and licence information for third-party components is contained in each individual sub-directory or source file. Summaries of these components including attribution information are briefly presented below.
 

@@ -3,7 +3,7 @@
 ############################################################
 FROM ubuntu:16.04
 
-MAINTAINER Daniel van Niekerk <dvn.demitasse@gmail.com>
+LABEL Maintainer="Daniel van Niekerk <dvn.demitasse@gmail.com>"
 LABEL Description="TTSLab2 Lwazi2 Afrikaans build scripts"
 
 
@@ -15,10 +15,10 @@ RUN apt-get install -y --force-yes csh #Required by SPTK
 RUN apt-get install -y --force-yes libx11-dev #Required by HTK
 RUN apt-get install -y --force-yes gfortran #Required by HTS
 RUN apt-get install -y --force-yes cmake cython python-numpy #Required to build TTSLab back-ends
-RUN apt-get install -y --force-yes python-cffi python-dateutil python-scipy #Required by TTSLab
-RUN apt-get install -y --force-yes libncurses5-dev #Required by EST
+RUN apt-get install -y --force-yes python-cffi python-dateutil python-scipy python-sklearn python-pyicu #Required by TTSLab
+#RUN apt-get install -y --force-yes libncurses5-dev #Required by EST
 RUN apt-get install -y --force-yes python-setuptools swig #Required to build Sequitur
-RUN apt-get install -y --force-yes bc sox normalize-audio tcl-snack praat #Required tools for voice build scripts
+RUN apt-get install -y --force-yes bc sox normalize-audio tcl-snack #Required tools for voice build scripts
 
 
 ## SETUP USER, LOCAL SOURCE, AND DATA
@@ -79,13 +79,22 @@ RUN python setup.py install --prefix=$USERHOME/local
 WORKDIR $USERHOME/local/lib/python2.7/site-packages
 RUN ln -s $USERHOME/src/g2p/sequitur_.py
 
+## Fetch and build Praat
+WORKDIR $USERHOME/src
+RUN git clone https://github.com/praat/praat.git
+WORKDIR $USERHOME/src/praat
+RUN cp makefiles/makefile.defs.linux.barren ./makefile.defs
+RUN make
+WORKDIR $USERHOME/local/bin
+RUN ln -s $USERHOME/src/praat/praat
+
 ## Fetch, build and setup TTSLab and tools
 WORKDIR $USERHOME/src
 RUN git clone https://github.com/demitasse/ttslab2.git
 RUN git clone https://github.com/demitasse/ttslabdev2.git
 #ttslab
 WORKDIR $USERHOME/src/ttslab2
-RUN git checkout be8f53c
+RUN git checkout 91734f9
 RUN mkdir -p hts_engine/build
 WORKDIR $USERHOME/src/ttslab2/hts_engine/build
 RUN cmake ..
@@ -112,7 +121,7 @@ ENV PYTHONPATH=$USERHOME/src/ttslab2:$USERHOME/src/ttslabdev2/modules:$PYTHONPAT
 WORKDIR $USERHOME/src
 RUN git clone https://github.com/demitasse/za_lex.git
 WORKDIR $USERHOME/src/za_lex
-RUN git checkout fbf1797
+RUN git checkout 0ae63fc
 ENV PATH=$USERHOME/src/za_lex/scripts:$PATH
 
 #afr dict
