@@ -95,7 +95,7 @@ RUN git clone https://github.com/demitasse/ttslab2.git
 RUN git clone https://github.com/demitasse/ttslabdev2.git
 #ttslab
 WORKDIR $USERHOME/src/ttslab2
-RUN git checkout 91734f9
+RUN git checkout 5cb979c
 RUN mkdir -p hts_engine/build
 WORKDIR $USERHOME/src/ttslab2/hts_engine/build
 RUN cmake ..
@@ -104,7 +104,7 @@ WORKDIR $USERHOME/src/ttslab2/ttslab/synthesizers
 RUN bash compile_relp.sh
 #ttslabdev
 WORKDIR $USERHOME/src/ttslabdev2
-RUN git checkout 76934a6
+RUN git checkout 260802e
 WORKDIR $USERHOME/src/ttslabdev2/voicetools
 RUN bash compile_dtw.sh
 WORKDIR $USERHOME/src/ttslabdev2/voicetools/HTS-template_16k_MELP

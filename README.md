@@ -1,7 +1,7 @@
 TTSLab Lwazi2 Afrikaans build scripts
 =====================================
 
-This repository contains pre-setup data and scripts for building an Afrikaans TTS voice using [TTSLab][1] and associated [build tools][2]. This repository should be built against TTSLab `commit 91734f9...`. The recommended way to do this is described in `./HOWTO.md` and involves cloning this repository and running the accompanying [Docker][3] script (`./Dockerfile`). 
+This repository contains pre-setup data and scripts for building an Afrikaans TTS voice using [TTSLab][1] and associated [build tools][2]. This repository should be built against TTSLab `commit 5cb979c...`. The recommended way to do this is described in `./HOWTO.md` and involves cloning this repository and running the accompanying [Docker][3] script (`./Dockerfile`). 
 
 The copyright and licence information for scripts in this repository can be found in `./COPYRIGHT` and `./LICENCE-APACHE`/`./LICENCE-MIT`. This repository also contains software and data developed by third parties used under licence in the `./src` and `./recs` directories. Copyright and licence information for third-party components is contained in each individual sub-directory or source file. Summaries of these components including attribution information are briefly presented below.
 
@@ -28,6 +28,7 @@ The source for the following external pieces of software are fetched automatical
 
  1. The [TTSLab toolkit][1] and associated [development tools][2] (please __cite 1__).
  2. The [ZA_lex][7] lexical resources for South African languages.
+ 3. [Praat][prtrepo] (see also http://www.fon.hum.uva.nl/praat/).
 
 #### Bundled
 
@@ -119,3 +120,4 @@ The source code for the following third-party tools are required but are not inc
 [13]: http://htk.eng.cam.ac.uk/ftp/software/HTK-3.4.1.tar.gz
 [14]: http://htk.eng.cam.ac.uk/extensions/index.shtml
 [15]: http://htk.eng.cam.ac.uk/prot-docs/hdecode.shtml
+[prtrepo]: https://github.com/praat/praat
