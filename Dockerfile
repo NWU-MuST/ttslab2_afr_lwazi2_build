@@ -83,6 +83,7 @@ RUN ln -s $USERHOME/src/g2p/sequitur_.py
 WORKDIR $USERHOME/src
 RUN git clone https://github.com/praat/praat.git
 WORKDIR $USERHOME/src/praat
+RUN git checkout 5d71e96
 RUN cp makefiles/makefile.defs.linux.barren ./makefile.defs
 RUN make
 WORKDIR $USERHOME/local/bin
@@ -121,7 +122,7 @@ ENV PYTHONPATH=$USERHOME/src/ttslab2:$USERHOME/src/ttslabdev2/modules:$PYTHONPAT
 WORKDIR $USERHOME/src
 RUN git clone https://github.com/demitasse/za_lex.git
 WORKDIR $USERHOME/src/za_lex
-RUN git checkout 0ae63fc
+RUN git checkout bfc2427
 ENV PATH=$USERHOME/src/za_lex/scripts:$PATH
 
 #afr dict
