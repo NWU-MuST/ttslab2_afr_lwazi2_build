@@ -105,8 +105,8 @@ The source code for the following third-party tools are required but are not inc
 ```
  
 
-[1]: https://github.com/demitasse/ttslab2
-[2]: https://github.com/demitasse/ttslabdev2
+[1]: https://github.com/NWU-MuST/ttslab2
+[2]: https://github.com/NWU-MuST/ttslabdev2
 [3]: https://www.docker.com/
 [4]: https://creativecommons.org/licenses/by-nc-nd/3.0/
 [5]: https://github.com/NWU-MuST/za_lex/tree/master/data/afr

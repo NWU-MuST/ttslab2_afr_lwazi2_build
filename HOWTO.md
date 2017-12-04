@@ -17,7 +17,7 @@ This repository contains the corpus, file structure and Docker script to automat
 
  - To clone the repository do the following on the command prompt (alternatively download and unzip the source):
 ```bash
-git clone https://github.com/demitasse/ttslab2_afr_lwazi2_build.git
+git clone https://github.com/NWU-MuST/ttslab2_afr_lwazi2_build.git
 ```
 
  - This should create a directory `ttslab2_afr_lwazi2_build` which we will refer to as `$TTSLAB_BUILD`.
@@ -48,7 +48,7 @@ docker run -v $TTSLAB_BUILD/out:/mnt/ext ttslab2_afr_lwazi2_build
 
 #### 5. Install TTSLab and test the voice file
 
-The resulting voice file `$TTSLAB_BUILD/out/afr_lwazi2.voice.pickle` can be loaded using [TTSLab](https://github.com/demitasse/ttslab2) (installed on your host system or from within the Docker image) from Python as follows:
+The resulting voice file `$TTSLAB_BUILD/out/afr_lwazi2.voice.pickle` can be loaded using [TTSLab](https://github.com/NWU-MuST/ttslab2) (installed on your host system or from within the Docker image) from Python as follows:
 ```python
 import ttslab
 v = ttslab.fromfile("afr_lwazi2.voice.pickle")

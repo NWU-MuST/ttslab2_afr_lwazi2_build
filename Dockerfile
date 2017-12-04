@@ -91,8 +91,8 @@ RUN ln -s $USERHOME/src/praat/praat
 
 ## Fetch, build and setup TTSLab and tools
 WORKDIR $USERHOME/src
-RUN git clone https://github.com/demitasse/ttslab2.git
-RUN git clone https://github.com/demitasse/ttslabdev2.git
+RUN git clone https://github.com/NWU-MuST/ttslab2.git
+RUN git clone https://github.com/NWU-MuST/ttslabdev2.git
 #ttslab
 WORKDIR $USERHOME/src/ttslab2
 RUN git checkout 5cb979c
@@ -120,7 +120,7 @@ ENV PYTHONPATH=$USERHOME/src/ttslab2:$USERHOME/src/ttslabdev2/modules:$PYTHONPAT
 
 #za_lex
 WORKDIR $USERHOME/src
-RUN git clone https://github.com/demitasse/za_lex.git
+RUN git clone https://github.com/NWU-MuST/za_lex.git
 WORKDIR $USERHOME/src/za_lex
 RUN git checkout bfc2427
 ENV PATH=$USERHOME/src/za_lex/scripts:$PATH
