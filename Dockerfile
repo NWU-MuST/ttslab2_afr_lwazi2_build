@@ -122,7 +122,7 @@ ENV PYTHONPATH=$USERHOME/src/ttslab2:$USERHOME/src/ttslabdev2/modules:$PYTHONPAT
 WORKDIR $USERHOME/src
 RUN git clone https://github.com/NWU-MuST/za_lex.git
 WORKDIR $USERHOME/src/za_lex
-RUN git checkout bfc2427
+RUN git checkout 8fcf4e7
 ENV PATH=$USERHOME/src/za_lex/scripts:$PATH
 
 #afr dict

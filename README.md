@@ -18,7 +18,7 @@ For more information and links to the original corpus distribution refer to `./r
 
 #### Afrikaans Pronunciation Dictionary
 
-The pronunciation dictionary used here was enhanced for use in TTS during the NTTS project funded by the Department of Arts and Culture (DAC) of the Government of South Africa and is [available on Github][5] under a Creative Commons licence (__cite 2__). The original automatic speech recognition (ASR) dictionary from which the current version was derived is [available on SourceForge][6] (__cite 3__).
+The pronunciation dictionary used here was enhanced for use in TTS during the NTTS project funded by the Department of Arts and Culture (DAC) of the Government of South Africa and is [available on Github][5] under a Creative Commons licence (__cite 2 or 3__). The original automatic speech recognition (ASR) dictionary from which the current version was derived is [available on SourceForge][6] (__cite 4__).
 
 ## Software
 
@@ -37,7 +37,7 @@ The following files contain source code from third parties with their own copyri
  1. [Edinburgh Speech Tools][8]: `./src/speech_tools-2.4-release.tar.gz`
  2. [Speech Signal Processing Toolkit (SPTK)][9]: `./src/SPTK-3.8.tar.gz`
  3. [HMM-based Speech Synthesis System (HTS)][10]: `./src/HTS-2.3beta_for_HTK-3.4.1.tar.bz2`
- 4. [Sequitur G2P][11]: A trainable Grapheme-to-Phoneme converter (__cite 4__): `./src/g2p-r1668-r3.tar.gz`
+ 4. [Sequitur G2P][11]: A trainable Grapheme-to-Phoneme converter (__cite 5__): `./src/g2p-r1668-r3.tar.gz`
 
 
 #### Not included
@@ -76,7 +76,20 @@ The source code for the following third-party tools are required but are not inc
 }
 ```
 
- 3. M.H. Davel and F. de Wet, __"Verifying pronunciation dictionaries using conflict analysis,"__ In Proc. Interspeech, Makuhari, Japan, Sept 2010, pp 1898-1901.
+ 3. D.R. van Niekerk, __"Evaluating acoustic modelling of lexical stress for Afrikaans speech synthesis,"__ in Proceedings of the 28th Annual Symposium of the Pattern Recognition Association of South Africa (PRASA), pp 86-91, Bloemfontein, South Africa, December 2017.
+```bibtex
+@inproceedings{vniekerk2017prasa,
+	title = {{Syllabification for Afrikaans speech synthesis}},
+	booktitle = {{Proceedings of the Twenty-Seventh Annual Symposium of the Pattern Recognition Association of South Africa (PRASA)}},
+	author = {van Niekerk, D. R.},
+	address = {Stellenbosch, South Africa},
+	month = dec,
+	year = {2017},
+	pages = {31-36}
+}
+```
+
+ 4. M.H. Davel and F. de Wet, __"Verifying pronunciation dictionaries using conflict analysis,"__ In Proc. Interspeech, Makuhari, Japan, Sept 2010, pp 1898-1901.
 ```bibtex
 @inproceedings{davel10verifying,
 	authors = {M.H Davel and F. de Wet},
@@ -89,7 +102,7 @@ The source code for the following third-party tools are required but are not inc
 }
 ```
 
- 4. M. Bisani and H. Ney, __"Joint-Sequence Models for Grapheme-to-Phoneme Conversion"__. Speech Communication, Volume 50, Issue 5, May 2008, Pages 434-451.
+ 5. M. Bisani and H. Ney, __"Joint-Sequence Models for Grapheme-to-Phoneme Conversion"__. Speech Communication, Volume 50, Issue 5, May 2008, Pages 434-451.
 ```bibtex
 @article{bisani2008jsmg2p,
 	title = {{Joint-Sequence Models for Grapheme-to-Phoneme Conversion}},
